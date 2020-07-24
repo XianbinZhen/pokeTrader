@@ -629,6 +629,26 @@ video {
   background-color: rgba(43, 108, 176, var(--bg-opacity));
 }
 
+.nav-li {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.nav-li:hover {
+  --text-opacity: 1;
+  color: #fefcbf;
+  color: rgba(254, 252, 191, var(--text-opacity));
+  border-bottom-width: 2px;
+  --border-opacity: 1;
+  border-color: #ecc94b;
+  border-color: rgba(236, 201, 75, var(--border-opacity));
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
