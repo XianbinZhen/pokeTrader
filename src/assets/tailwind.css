@@ -2,7 +2,16 @@
 
 @tailwind components;
 
-@tailwind utilities;
-
-@media (max-width: 768px) {
+.btn {
+	@apply px-4 py-2 font-bold rounded;
 }
+
+.btn-blue {
+	@apply text-white bg-blue-500;
+}
+
+.btn-blue:hover {
+	@apply bg-blue-700;
+}
+
+@tailwind utilities;

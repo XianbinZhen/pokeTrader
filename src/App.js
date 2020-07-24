@@ -4,8 +4,11 @@ import Navbar from './components/UI/Navbar';
 
 function App() {
 	return (
-		<div className="container overflow-hidden mx-auto">
+		<div className="container relative mx-auto overflow-hidden">
 			<Navbar />
+			<h1>hello</h1>
+			<h1>hello</h1>
+			<h1>hello</h1>
 		</div>
 	);
 }
