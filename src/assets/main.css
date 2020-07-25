@@ -612,6 +612,9 @@ video {
   padding-bottom: 0.5rem;
   font-weight: 700;
   border-radius: 0.25rem;
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
 }
 
 .btn-blue {
@@ -637,6 +640,7 @@ video {
   margin-top: 1rem;
   margin-bottom: 1rem;
   cursor: pointer;
+  font-weight: 700;
 }
 
 .nav-li:hover {
