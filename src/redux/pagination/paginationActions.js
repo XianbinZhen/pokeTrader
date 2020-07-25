@@ -1,4 +1,4 @@
-import { NEXT_PAGE, PREVIOUS_PAGE, FIRST_PAGE, LAST_PAGE } from './paginationType';
+import { NEXT_PAGE, PREVIOUS_PAGE, FIRST_PAGE, LAST_PAGE, GOTO_PAGE } from './paginationType';
 
 export const nextPage = () => {
 	return {
@@ -21,5 +21,12 @@ export const firstPage = () => {
 export const lastPage = () => {
 	return {
 		type: LAST_PAGE
+	};
+};
+
+export const gotoPage = (page) => {
+	return {
+		type: GOTO_PAGE,
+		payload: page
 	};
 };

@@ -1,4 +1,4 @@
-import { NEXT_PAGE, PREVIOUS_PAGE, LAST_PAGE, FIRST_PAGE } from './paginationType';
+import { NEXT_PAGE, PREVIOUS_PAGE, LAST_PAGE, FIRST_PAGE, GOTO_PAGE } from './paginationType';
 
 const MAX_SIZE = 807;
 const PAGE_SIZE = 20;
@@ -33,6 +33,13 @@ const paginationReducer = (state = initialState, action) => {
 			return {
 				...state,
 				page: MAX_SIZE - PAGE_SIZE
+			};
+		case GOTO_PAGE:
+			currentPage = action.payload * PAGE_SIZE;
+			if (currentPage > MAX_SIZE - PAGE_SIZE) currentPage = MAX_SIZE - PAGE_SIZE;
+			return {
+				...state,
+				page: currentPage
 			};
 		default:
 			return state;

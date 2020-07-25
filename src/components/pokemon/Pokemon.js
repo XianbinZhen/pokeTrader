@@ -28,13 +28,12 @@ const Pokemon = ({ name, entry_number }) => {
 			<img
 				src={loading ? loadingImg : url}
 				alt="pokemon"
-				className="cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105 p-2 w-48 h-48 object-contain shadow-lg rounded-t-md border"
+				className="cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105 p-2 w-32 h-32 object-contain shadow-lg rounded-t-md border"
 			/>
 			<div className="bg-blue-500 text-white p-2 rounded-b-md">
 				<a className="font-bold" href="google.com">
 					{name}
 				</a>
-				<h5 className="text-gray-400">{entry_number}</h5>
 				<h5>$ {weight}</h5>
 			</div>
 		</div>

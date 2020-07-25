@@ -1,12 +1,23 @@
 import React, { useEffect } from 'react';
 import Pokemon from './Pokemon';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPokemon } from '../../redux';
+import { fetchPokemon, searchPokemon } from '../../redux';
 
 const Pokemons = () => {
 	const { loading, pokemon, error } = useSelector((state) => state.pokemon);
 	const { page } = useSelector((state) => state.page);
+	const { searchPokemonResult } = useSelector((state) => state.searchPokemonResult);
 	const dispatch = useDispatch();
+
+	useEffect(
+		() => {
+			dispatch(searchPokemon(searchPokemonResult, page));
+			return () => {
+				//
+			};
+		},
+		[ searchPokemonResult ]
+	);
 
 	useEffect(
 		() => {

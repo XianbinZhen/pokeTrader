@@ -39,3 +39,38 @@ export const fetchPokemon = (page) => {
 			});
 	};
 };
+
+export const searchPokemon = (searchInput, page) => {
+	if (searchInput)
+		return (dispatch) => {
+			dispatch(fetchPokemonRequest);
+			axios
+				.get(NATIONAL_DEX_URL)
+				.then((res) => {
+					const pokemon = res.data.pokemon_entries.filter((data) =>
+						data.pokemon_species.name.includes(searchInput)
+					);
+					dispatch(fetchPokemonSuccess(pokemon));
+				})
+				.catch((error) => {
+					const errorMsg = error.message;
+					dispatch(fetchPokemonFailure(errorMsg));
+				});
+		};
+	else {
+		console.log('else!');
+		return (dispatch) => {
+			dispatch(fetchPokemonRequest);
+			axios
+				.get(NATIONAL_DEX_URL)
+				.then((res) => {
+					const pokemon = res.data.pokemon_entries.slice(page, page + PAGE_SIZE);
+					dispatch(fetchPokemonSuccess(pokemon));
+				})
+				.catch((error) => {
+					const errorMsg = error.message;
+					dispatch(fetchPokemonFailure(errorMsg));
+				});
+		};
+	}
+};
