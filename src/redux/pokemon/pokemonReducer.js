@@ -15,12 +15,14 @@ const pokemonReducer = (state = initialState, action) => {
 			};
 		case FETCH_POKEMON_SUCCESS:
 			return {
+				...state,
 				loading: false,
 				pokemon: action.payload,
 				error: ''
 			};
 		case FETCH_POKEMON_FAILURE:
 			return {
+				...state,
 				loading: false,
 				pokemon: [],
 				error: action.payload

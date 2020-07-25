@@ -2,6 +2,7 @@ import { FETCH_POKEMON_REQUEST, FETCH_POKEMON_SUCCESS, FETCH_POKEMON_FAILURE } f
 import axios from 'axios';
 
 const NATIONAL_DEX_URL = 'https://pokeapi.co/api/v2/pokedex/1';
+const PAGE_SIZE = 20;
 
 export const fetchPokemonRequest = () => {
 	return {
@@ -23,13 +24,13 @@ export const fetchPokemonFailure = (error) => {
 	};
 };
 
-export const fetchPokemon = () => {
+export const fetchPokemon = (page) => {
 	return (dispatch) => {
 		dispatch(fetchPokemonRequest);
 		axios
 			.get(NATIONAL_DEX_URL)
 			.then((res) => {
-				const pokemon = res.data.pokemon_entries;
+				const pokemon = res.data.pokemon_entries.slice(page, page + PAGE_SIZE);
 				dispatch(fetchPokemonSuccess(pokemon));
 			})
 			.catch((error) => {
