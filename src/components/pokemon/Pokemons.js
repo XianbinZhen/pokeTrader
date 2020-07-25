@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPokemon } from '../../redux';
 
 const Pokemons = () => {
-	const { pokemon } = useSelector((state) => state.pokemon);
+	const { loading, pokemon, error } = useSelector((state) => state.pokemon);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -14,7 +14,11 @@ const Pokemons = () => {
 		};
 	}, []);
 
-	return (
+	return loading ? (
+		<h1>loading...</h1>
+	) : error ? (
+		<h1>{error}</h1>
+	) : (
 		<div className="flex flex-wrap items-center justify-center">
 			{pokemon &&
 				pokemon.map((pokemon) => (

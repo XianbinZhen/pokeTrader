@@ -6,7 +6,7 @@ const Search = () => {
 		<div className="flex justify-around py-2">
 			<div className="flex items-center ">
 				<FaSearch />
-				<input type="text" placeholder="Search" className="px-2 mx-2 rounded " />
+				<input type="text" placeholder="Search" className="px-2 m-2 rounded border-b-2 " />
 			</div>
 		</div>
 	);
