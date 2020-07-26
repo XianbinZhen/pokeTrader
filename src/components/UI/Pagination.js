@@ -6,13 +6,16 @@ import { nextPage, previousPage, lastPage, firstPage, gotoPage } from '../../red
 const Pagination = () => {
 	const { page } = useSelector((state) => state.page);
 	const dispatch = useDispatch();
-	const pageNumber = Math.ceil((page - 1) / 20) + 1;
+	const pageNumber = Math.floor((page - 1) / 20) + 1;
 	const [ inputNumber, setInputNumber ] = useState(pageNumber);
 
 	const handleChangePage = (e) => {
 		e.preventDefault();
-		setInputNumber(e.target.value);
-		dispatch(gotoPage(e.target.value));
+		let value = e.target.value;
+		if (value < 0) value = 0;
+		if (value > 40) value = 40;
+		setInputNumber(value);
+		dispatch(gotoPage(value));
 	};
 	useEffect(
 		() => {
@@ -26,7 +29,7 @@ const Pagination = () => {
 	return (
 		<div className="flex items-center justify-center flex-wrap">
 			<div>
-				<button className="btn btn-blue mx-2" onClick={() => dispatch(firstPage())}>
+				<button className="btn btn-blue mx-2" onClick={() => window.location.reload(false)}>
 					First page
 				</button>
 				<button className="btn btn-blue m-2" onClick={() => dispatch(lastPage())}>
@@ -43,12 +46,12 @@ const Pagination = () => {
 			</div>
 			<div className="">
 				<label htmlFor="pageNumber" className="mx-2 p-2">
-					Page (total 41):{' '}
+					Page (max 40):{' '}
 				</label>
 				<input
 					type="number"
-					min="1"
-					max="41"
+					min="0"
+					max="40"
 					onChange={handleChangePage}
 					value={inputNumber}
 					id="pageNumber"

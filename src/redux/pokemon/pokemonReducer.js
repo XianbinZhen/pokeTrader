@@ -1,9 +1,15 @@
-import { FETCH_POKEMON_REQUEST, FETCH_POKEMON_SUCCESS, FETCH_POKEMON_FAILURE } from './pokemonType';
+import {
+	FETCH_POKEMON_REQUEST,
+	FETCH_POKEMON_SUCCESS,
+	FETCH_POKEMON_FAILURE,
+	FETCH_POKEMON_SUCCESS_TO_SHOW
+} from './pokemonType';
 
 const initialState = {
 	loading: true,
 	pokemon: [],
-	error: ''
+	error: '',
+	pokemonToShow: []
 };
 
 const pokemonReducer = (state = initialState, action) => {
@@ -27,6 +33,14 @@ const pokemonReducer = (state = initialState, action) => {
 				pokemon: [],
 				error: action.payload
 			};
+		case FETCH_POKEMON_SUCCESS_TO_SHOW:
+			return {
+				...state,
+				loading: false,
+				error: '',
+				pokemonToShow: action.payload
+			};
+
 		default:
 			return state;
 	}

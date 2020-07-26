@@ -1,24 +1,13 @@
 import React, { useEffect } from 'react';
 import Pokemon from './Pokemon';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPokemon, searchPokemon } from '../../redux';
+import { fetchPokemon } from '../../redux';
 
 const Pokemons = () => {
-	const { loading, pokemon, error } = useSelector((state) => state.pokemon);
+	const { loading, error, pokemonToShow } = useSelector((state) => state.pokemon);
 	const { page } = useSelector((state) => state.page);
-	const { searchPokemonResult } = useSelector((state) => state.searchPokemonResult);
+	// const { searchPokemonResult } = useSelector((state) => state.searchPokemonResult);
 	const dispatch = useDispatch();
-
-	useEffect(
-		() => {
-			dispatch(searchPokemon(searchPokemonResult, page));
-			return () => {
-				//
-			};
-		},
-		[ searchPokemonResult ]
-	);
-
 	useEffect(
 		() => {
 			dispatch(fetchPokemon(page));
@@ -26,8 +15,19 @@ const Pokemons = () => {
 				//
 			};
 		},
-		[ page ]
+		[ page, dispatch ]
 	);
+
+	// useEffect(
+	// 	() => {
+	// 		console.log('pokemon', pokemon);
+	// 		// pokemon && dispatch(searchPokemon(pokemon, searchPokemonResult, page));
+	// 		return () => {
+	// 			//
+	// 		};
+	// 	},
+	// 	[ searchPokemonResult, pokemon, page ]
+	// );
 
 	return loading ? (
 		<h1>loading...</h1>
@@ -36,8 +36,8 @@ const Pokemons = () => {
 	) : (
 		<div>
 			<div className="flex flex-wrap items-center justify-center">
-				{pokemon &&
-					pokemon.map((pokemon) => (
+				{pokemonToShow &&
+					pokemonToShow.map((pokemon) => (
 						<Pokemon
 							key={pokemon.entry_number}
 							name={pokemon.pokemon_species.name}
