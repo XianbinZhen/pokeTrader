@@ -31,7 +31,7 @@ const Pokemon = ({ name, entry_number }) => {
 			/>
 			<div className="bg-blue-500 text-white p-2 rounded-b-md">
 				<a className="font-bold" href="google.com">
-					{name}
+					<span className="capitalize">{name}</span>
 				</a>
 				<h5>$ {weight}</h5>
 			</div>
