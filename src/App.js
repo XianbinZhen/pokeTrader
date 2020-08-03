@@ -15,12 +15,8 @@ function App() {
 			<Search />
 			<Pagination />
 			<Switch>
-				<Route exact path="/">
-					<Pokemons />
-				</Route>
-				<Route exact path="/detail">
-					<PokemonDetail />
-				</Route>
+				<Route exact path="/" component={Pokemons} />
+				<Route exact path="/pokemon/:id" component={PokemonDetail} />
 			</Switch>
 			<Footer />
 		</div>

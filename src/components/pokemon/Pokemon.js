@@ -28,7 +28,7 @@ const Pokemon = ({ name, entry_number }) => {
 	);
 	return (
 		<div className="p-2 relative">
-			<Link to="/detail">
+			<Link to={`/pokemon/${entry_number}`}>
 				<img
 					src={loading ? loadingImg : url}
 					alt="pokemon"
