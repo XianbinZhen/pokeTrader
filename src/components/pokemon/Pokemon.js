@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import loadingImg from '../../img/loading.gif';
 import PokemonType from './PokemonType';
@@ -27,11 +28,13 @@ const Pokemon = ({ name, entry_number }) => {
 	);
 	return (
 		<div className="p-2 relative">
-			<img
-				src={loading ? loadingImg : url}
-				alt="pokemon"
-				className="cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105 p-2 w-32 h-32 object-contain shadow-lg rounded-t-md border"
-			/>
+			<Link to="/detail">
+				<img
+					src={loading ? loadingImg : url}
+					alt="pokemon"
+					className="cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105 p-2 w-32 h-32 object-contain shadow-lg rounded-t-md border"
+				/>
+			</Link>
 			<div className="flex justify-center items-center p-1 absolute top-0 inset-x-0 ">
 				{type && type.map((type, index) => <PokemonType key={index} typeName={type.type.name} />)}
 			</div>
