@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import loadingImg from '../../img/loading.gif';
-import PokemonType from './PokemonType';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import loadingImg from '../../img/loading.gif'
+import PokemonType from './PokemonType'
 const Pokemon = ({ name, entry_number }) => {
-	const [ url, setUrl ] = useState('');
-	const [ loading, setLoading ] = useState(true);
-	const [ weight, setWeight ] = useState('');
-	const [ type, setType ] = useState([]);
+	const [ url, setUrl ] = useState('')
+	const [ loading, setLoading ] = useState(true)
+	const [ weight, setWeight ] = useState('')
+	const [ type, setType ] = useState([])
 
 	useEffect(
 		() => {
 			axios.get(`https://pokeapi.co/api/v2/pokemon/${entry_number}`).then((res) => {
-				const imgUrl = res.data.sprites.front_default;
-				const weight = res.data.weight;
-				const type = res.data.types;
-				setUrl(imgUrl);
-				setWeight(weight);
-				setType(type);
-				setLoading(false);
-			});
+				const imgUrl = res.data.sprites.front_default
+				const weight = res.data.weight
+				const type = res.data.types
+				setUrl(imgUrl)
+				setWeight(weight)
+				setType(type)
+				setLoading(false)
+			})
 			return () => {
 				//
-			};
+			}
 		},
 		[ entry_number ]
-	);
+	)
 	return (
 		<div className="p-2 relative">
 			<Link to={`/pokemon/${entry_number}`}>
@@ -45,6 +45,6 @@ const Pokemon = ({ name, entry_number }) => {
 				<h5>$ {weight}</h5>
 			</div>
 		</div>
-	);
-};
-export default Pokemon;
+	)
+}
+export default Pokemon

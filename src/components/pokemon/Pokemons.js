@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react';
-import Pokemon from './Pokemon';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchPokemon } from '../../redux';
+import React, { useEffect } from 'react'
+import Pokemon from './Pokemon'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchPokemon } from '../../redux'
 
 const Pokemons = () => {
-	const { loading, error, pokemonToShow } = useSelector((state) => state.pokemon);
-	const { page } = useSelector((state) => state.page);
+	const { loading, error, pokemonToShow } = useSelector((state) => state.pokemon)
+	const { page } = useSelector((state) => state.page)
 	// const { searchPokemonResult } = useSelector((state) => state.searchPokemonResult);
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 	useEffect(
 		() => {
-			dispatch(fetchPokemon(page));
+			dispatch(fetchPokemon(page))
 			return () => {
 				//
-			};
+			}
 		},
 		[ page, dispatch ]
-	);
+	)
 
 	// useEffect(
 	// 	() => {
@@ -46,7 +46,7 @@ const Pokemons = () => {
 					))}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Pokemons;
+export default Pokemons

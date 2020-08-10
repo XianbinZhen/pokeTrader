@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-import { useDispatch, useSelector } from 'react-redux';
-import { nextPage, previousPage, lastPage, firstPage, gotoPage } from '../../redux';
+import { useDispatch, useSelector } from 'react-redux'
+import { nextPage, previousPage, lastPage, firstPage, gotoPage } from '../../redux'
 
 const Pagination = () => {
-	const { page } = useSelector((state) => state.page);
-	const dispatch = useDispatch();
-	const pageNumber = Math.floor((page - 1) / 20) + 1;
-	const [ inputNumber, setInputNumber ] = useState(pageNumber);
+	const { page } = useSelector((state) => state.page)
+	const dispatch = useDispatch()
+	const pageNumber = Math.floor((page - 1) / 20) + 1
+	const [ inputNumber, setInputNumber ] = useState(pageNumber)
 
 	const handleChangePage = (e) => {
-		e.preventDefault();
-		let value = e.target.value;
-		if (value < 0) value = 0;
-		if (value > 40) value = 40;
-		setInputNumber(value);
-		dispatch(gotoPage(value));
-	};
+		e.preventDefault()
+		let value = e.target.value
+		if (value < 0) value = 0
+		if (value > 40) value = 40
+		setInputNumber(value)
+		dispatch(gotoPage(value))
+	}
 	useEffect(
 		() => {
-			setInputNumber(pageNumber);
+			setInputNumber(pageNumber)
 			return () => {
 				//
-			};
+			}
 		},
 		[ pageNumber ]
-	);
+	)
 	return (
 		<div className="flex items-center justify-center flex-wrap">
 			<div>
@@ -59,7 +59,7 @@ const Pagination = () => {
 				/>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Pagination;
+export default Pagination

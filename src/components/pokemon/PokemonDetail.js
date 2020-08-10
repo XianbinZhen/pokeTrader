@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import PokemonType from '../pokemon/PokemonType';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import PokemonType from '../pokemon/PokemonType'
 
-const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon/';
-const IMG_URL = 'https://pokeres.bastionbot.org/images/pokemon/';
+const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon/'
+const IMG_URL = 'https://pokeres.bastionbot.org/images/pokemon/'
 
 const PokemonDetail = ({ match }) => {
-	const { id } = match.params;
-	const [ data, setData ] = useState({});
+	const { id } = match.params
+	const [ data, setData ] = useState({})
 
 	useEffect(
 		() => {
 			axios
 				.get(`${POKEMON_URL}${id}`)
 				.then((res) => {
-					setData(res.data);
+					setData(res.data)
 				})
-				.catch((error) => console.log(error));
+				.catch((error) => console.log(error))
 			return () => {
 				//
-			};
+			}
 		},
 		[ id ]
-	);
+	)
 
 	return (
 		<div className="container text-center">
@@ -71,7 +71,7 @@ const PokemonDetail = ({ match }) => {
 				<Link to="/">Back</Link>
 			</button>
 		</div>
-	);
-};
+	)
+}
 
-export default PokemonDetail;
+export default PokemonDetail

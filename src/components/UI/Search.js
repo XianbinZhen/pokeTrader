@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { FaSearch } from 'react-icons/fa';
-import { searchPokemon } from '../../redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { FaSearch } from 'react-icons/fa'
+import { searchPokemon } from '../../redux'
 
 const Search = () => {
-	const [ searchInput, setSearchInput ] = useState('');
-	const dispatch = useDispatch();
+	const [ searchInput, setSearchInput ] = useState('')
+	const dispatch = useDispatch()
 
 	const handleSearch = () => {
-		if (searchInput) dispatch(searchPokemon(searchInput));
-		else window.location.reload(false);
-	};
+		if (searchInput) dispatch(searchPokemon(searchInput))
+		else window.location.reload(false)
+	}
 	const handleKeyDown = (e) => {
 		if (e.keyCode === 13) {
-			if (searchInput) dispatch(searchPokemon(searchInput));
-			else window.location.reload(false);
+			if (searchInput) dispatch(searchPokemon(searchInput))
+			else window.location.reload(false)
 		}
-	};
+	}
 
 	return (
 		<div className="flex justify-around py-2">
@@ -34,7 +34,7 @@ const Search = () => {
 				</button>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Search;
+export default Search

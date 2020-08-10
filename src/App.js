@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import './assets/main.css';
-import Navbar from './components/UI/Navbar';
-import Search from './components/UI/Search';
-import Pagination from './components/UI/Pagination';
-import Pokemons from './components/pokemon/Pokemons';
-import Footer from './components/UI/Footer';
-import PokemonDetail from './components/pokemon/PokemonDetail';
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import './assets/main.css'
+import Navbar from './components/UI/Navbar'
+import Search from './components/UI/Search'
+import Pagination from './components/UI/Pagination'
+import Pokemons from './components/pokemon/Pokemons'
+import Footer from './components/UI/Footer'
+import PokemonDetail from './components/pokemon/PokemonDetail'
 
 function App() {
 	return (
@@ -20,7 +20,7 @@ function App() {
 			</Switch>
 			<Footer />
 		</div>
-	);
+	)
 }
 
-export default App;
+export default App
